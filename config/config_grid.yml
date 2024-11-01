@@ -1,0 +1,33 @@
+# input path
+input_path: 'D:/test_images/center'
+
+# output path
+output_path: 'D:/test_images/grid'
+
+# output format
+# choices=['jpg', 'png', 'jp2', 'tif']
+output_format: 'jpg'
+
+# mode
+# choices=['center', 'grid']
+mode: 'grid'
+
+# crop size
+crop_size: [256, 256]
+
+center:
+  # specify center coordinates
+  center: [1000, 1000]
+
+grid:
+  # gap size
+  gap_size: 24
+
+output_params:
+  jpg:
+    jpg_quality: 100
+  jp2:
+    jp2_compression: 950
+  tif:
+    swap_rb_channel: False
+    # tif_data_type: None
