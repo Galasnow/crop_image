@@ -99,12 +99,10 @@ def crop_image_by_grid(input_path: str, output_path: str, crop_size: Sequence[in
 
 
 def batch_crop_image_by_grid(input_path: str, *args, **kwargs):
-    for item in tqdm(os.scandir(input_path)):
-        if item.is_file():
-            _, suffix = os.path.splitext(item)
-            if suffix.replace('.', '') in support_file_list:
-                file_name = item.name
-                crop_image_by_grid(f'{input_path}/{file_name}', *args,  **kwargs)
+    image_name_list = [image_name for image_name in os.listdir(input_path)
+                       if os.path.splitext(image_name)[-1].replace('.', '') in support_file_list]
+    for image_name in tqdm(image_name_list):
+        crop_image_by_grid(f'{input_path}/{image_name}', *args, **kwargs)
 
 
 def generate_center_based_window(image_shape: Sequence[int], center: Sequence[int], crop_size: Sequence[int]) -> dict:
@@ -192,12 +190,10 @@ def crop_image_by_center(input_path: str, output_path: str, center: Sequence[int
 
 
 def batch_crop_image_by_center(input_path: str, *args, **kwargs):
-    for item in tqdm(os.scandir(input_path)):
-        if item.is_file():
-            _, suffix = os.path.splitext(item)
-            if suffix.replace('.', '') in support_file_list:
-                file_name = item.name
-                crop_image_by_center(f'{input_path}/{file_name}', *args, **kwargs)
+    image_name_list = [image_name for image_name in os.listdir(input_path)
+                       if os.path.splitext(image_name)[-1].replace('.', '') in support_file_list]
+    for image_name in tqdm(image_name_list):
+        crop_image_by_center(f'{input_path}/{image_name}', *args, **kwargs)
 
 
 def parse_args():
