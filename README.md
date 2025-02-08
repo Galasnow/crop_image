@@ -6,14 +6,14 @@ Crop images including interest target. It's suitable for generate testset from r
 
 ### 2. Install requirements. Conda env is recommended.
     cd crop_image
-    conda create -n <name> python=3.10
+    conda create -n <name> python=3.12
     conda activate <name>
-    conda install -c conda-forge gdal
+    conda install conda-forge::gdal
     pip install -r requirements.txt
 
 ### 3. Prepare images.
 
-### 4. Edit `config/config_cenetr.yml` or `config/config_grid.yml` according to your setting.
+### 4. Edit `config/config_center.yml` or `config/config_grid.yml` according to your setting.
 
 ### 5. Run the script.
     python src/crop_image.py config/config_center.yml
